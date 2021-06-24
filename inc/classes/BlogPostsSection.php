@@ -6,24 +6,17 @@ class BlogPostsSection extends Timber {
 
   public function __construct() {
     parent::__construct();
-    
-    // timber stuff. the usual stuff
     add_filter('timber/twig', array($this, 'add_to_twig'));
     add_filter('timber/context', array($this, 'add_to_context'));
-    
-    // shortcode for the markup
-    add_shortcode('blog_posts_section', 'blog_posts_section'); // see inc/functions.php
-    
-    // enqueue plugin assets
-    add_action('wp_enqueue_scripts', array($this, 'blog_posts_assets'));
-    
-    // add_filter( 'blog-posts-section', array($this, 'my_plugin_load_my_own_textdomain'), 10, 2 );
+
+    add_action('plugins_loaded', array($this, 'plugin_timber_locations'));
     add_action('plugins_loaded', array($this, 'plugin_text_domain_init'));
+    add_action('wp_enqueue_scripts', array($this, 'plugin_enqueue_assets'));
     
-    add_action('plugins_loaded', array($this, 'timber_locations'));
+    add_shortcode('blog_posts_section', 'blog_posts_section'); 
   }
   
-  public function timber_locations() {
+  public function plugin_timber_locations() {
     // if timber::locations is empty (another plugin hasn't already added to it), make it an array
     if(!Timber::$locations) Timber::$locations = array();
     // add a new views path to the locations array
@@ -37,7 +30,7 @@ class BlogPostsSection extends Timber {
     load_plugin_textdomain('blog-posts-section', false, BLOG_POSTS_BASE. '/languages');
   }
   
-  public function blog_posts_assets() {
+  public function plugin_enqueue_assets() {
     wp_enqueue_style(
       'blog-posts-section',
       BLOG_POSTS_URL . 'public/css/blog-posts-section.css'
