@@ -2,7 +2,7 @@
 /*
 Plugin Name: Blog Posts Section by RMcC
 Plugin URI: #
-Description: Adds a blog posts section with shortcode
+Description: Add a blog posts section to a page using the [blog_posts_section] shortcode. Ideal for the Homepage. This plugin is translation-ready.
 Version: 1.0.0
 Author: robmccormack89
 Author URI: #
