@@ -17,8 +17,8 @@
 
         <p>{{ post.preview.length(22).force.read_more('')|e('esc_html') }}</p>
 
-        <a href="{{ post.link|e('esc_url') }}" class="uk-button uk-button-default uk-button-large">
-          {{ _x('Read more', 'Blog posts', 'blog-posts-section')|e('esc_html') }}
+        <a class="uk-button uk-button-text" href="{{ post.link|e('esc_url') }}">
+          {{ _x('Read more', 'Blog posts - read more text', 'blog-posts-section')|e('esc_html') }}
         </a>
 
       </article>
