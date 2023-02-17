@@ -1,28 +1,29 @@
 {% if latest_posts is not empty %}
-  <section class="blog-posts-section uk-grid-column-collapse" uk-grid>
+	<section class="blog-posts-section">
+		<div uk-grid>
 
-    {% for post in latest_posts %}
-      <article class="post {{ post.class|e('esc_html') }}">
+			{% for post in latest_posts %}
+				<article class="post {{ post.class|e('esc_html') }}">
 
-        {% if post.thumbnail is not empty %}
-          <img
-          src="{{ post.thumbnail.src|resize(720, 620)|e('esc_url') }}"
-          alt="{{ post.thumbnail.alt|e('esc_html') }}"
-          width="720" height="620">
-        {% endif %}
+					{% if post.thumbnail %}
+						<img src="{{ post.thumbnail.src|resize(720, 620)|e('esc_url') }}" alt="{{ post.thumbnail.alt|e('esc_html') }}" width="720" height="620">
+					{% endif %}
 
-        <h3>
-          <a class="uk-link-heading" href="{{ post.link|e('esc_url') }}">{{ post.title|e('esc_html') }}</a>
-        </h3>
+					<h3>
+						<a class="uk-link-heading" href="{{ post.link|e('esc_url') }}">{{ post.title|e('esc_html') }}</a>
+					</h3>
 
-        <p>{{ post.preview.length(22).force.read_more('')|e('esc_html') }}</p>
+					{% if post.preview is not empty %}
+						<p>{{ post.preview.length(22).force.read_more('')|e('esc_html') }}</p>
+					{% endif %}
 
-        <a class="uk-button uk-button-text" href="{{ post.link|e('esc_url') }}">
-          {{ _x('Read more', 'Blog posts - read more text', 'blog-posts-section')|e('esc_html') }}
-        </a>
+					<a class="uk-button uk-button-text" href="{{ post.link|e('esc_url') }}">
+						{{ _x('Read more', 'Read more button - text', 'blog-posts-section')|e('esc_html') }}
+					</a>
 
-      </article>
-    {% endfor %}
+				</article>
+			{% endfor %}
 
-  </section>
+		</div>
+	</section>
 {% endif %}

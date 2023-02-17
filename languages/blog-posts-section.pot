@@ -14,6 +14,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: views/temp/blog-posts.php:21
-msgctxt "Blog posts"
+msgctxt "Read more button - text"
 msgid "Read more"
 msgstr ""
