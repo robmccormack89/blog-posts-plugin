@@ -2,7 +2,7 @@
 /*
 Plugin Name: Blog Posts Section by RMcC
 Plugin URI: #
-Description: Add a blog posts section to a page using the [blog_posts_section] shortcode. Ideal for the Homepage. This plugin is translation-ready.
+Description: Display your latest 3 blog posts using the [blog_posts_section] shortcode. This plugin is translation-ready.
 Version: 1.0.0
 Author: robmccormack89
 Author URI: #
@@ -27,5 +27,5 @@ if (file_exists($composer_autoload = __DIR__.'/vendor/autoload.php')) require_on
 // then require the main plugin class. this class extends Timber/Timber which is required via composer
 new Rmcc\BlogPostsSection;
 
-// require action functions 
+// require action functions
 require_once('inc/functions.php');

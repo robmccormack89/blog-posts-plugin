@@ -1,4 +1,4 @@
-# Copyright (C) 2021 blog-posts-section
+# Copyright (C) 2023 blog-posts-section
 # This file is distributed under the same license as the blog-posts-section package.
 msgid ""
 msgstr ""
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: views/temp/blog-posts.php:16, views/temp/blog-posts.php:38
+#: views/temp/blog-posts.php:21
 msgctxt "Blog posts"
 msgid "Read more"
 msgstr ""

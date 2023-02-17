@@ -1,48 +1,28 @@
-{% if latest_posts_one is not empty and latest_posts_three|length > 1 %}
-  <section class="home-blog-posts uk-section uk-container">
-    <div uk-grid>
-      <div class="home-blog-left first-post uk-width-2-5@m">
-        {% for post in latest_posts_one %}
-          <div class="post uk-text-center">
-            <img 
-            data-src="{{ post.thumbnail.src|resize(720, 620)|e('esc_url')|default('https://via.placeholder.com/720x620?text=Add+a+featured+image') }}" 
-            alt="{{post.thumbnail.alt|e('esc_html')}}" 
-            width="720" height="620" 
-            uk-img>
-            <a class="uk-link-reset" href="{{post.link|e('esc_url')}}">
-              <h3 class="uk-margin-top">{{post.title|e('esc_html')}}</h3>
-            </a>
-            <p>{{ post.preview.length(22).force.read_more('')|e('esc_html') }}</p>
-            <a href="{{post.link|e('esc_url')}}" class="uk-button uk-button-default uk-button-large">{{ _x('Read more', 'Blog posts', 'blog-posts-section')|e('esc_html') }}</a>
-          </div>
-        {% endfor %}
-      </div>
-      <div class="home-blog-right next-three-posts uk-width-3-5@m">
-        <div class="uk-child-width-1-1" uk-grid>
-          {% for post in latest_posts_three %}
-            <div class="post stacked">
-              <div class="uk-child-width-1-2@m uk-grid uk-flex uk-flex-middle" uk-grid>
-                <div>
-                  <img 
-                  data-src="{{ post.thumbnail.src|resize(720, 509)|e('esc_url')|default('https://via.placeholder.com/720x509?text=Add+a+featured+image') }}" 
-                  alt="{{post.thumbnail.alt|e('esc_html')}}" 
-                  width="720" height="509" 
-                  uk-img>
-                </div>
-                <div>
-                  <a class="uk-link-reset" href="{{post.link|e('esc_url')}}">
-                    <h3 class="uk-h4 uk-margin-remove">{{post.title|e('esc_html')}}</h3>
-                  </a>
-                  <p class="uk-margin-small">{{ post.preview.length(18).force.read_more('')|e('esc_html') }}</p>
-                  <div class="uk-margin-small-top">
-                    <a href="{{post.link|e('esc_url')}}" class="feature-link uk-text-uppercase uk-text-emphasis">{{ _x('Read more', 'Blog posts', 'blog-posts-section')|e('esc_html') }}</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-  </section>
+{% if latest_posts is not empty %}
+  <ul class="blog-posts-section uk-grid-column-collapse" uk-grid>
+
+    {% for post in latest_posts %}
+      <article class="post {{ post.class|e('esc_html') }}">
+
+        {% if post.thumbnail is not empty %}
+          <img
+          src="{{ post.thumbnail.src|resize(720, 620)|e('esc_url') }}"
+          alt="{{ post.thumbnail.alt|e('esc_html') }}"
+          width="720" height="620">
+        {% endif %}
+
+        <h3>
+          <a class="uk-link-heading" href="{{ post.link|e('esc_url') }}">{{ post.title|e('esc_html') }}</a>
+        </h3>
+
+        <p>{{ post.preview.length(22).force.read_more('')|e('esc_html') }}</p>
+
+        <a href="{{ post.link|e('esc_url') }}" class="uk-button uk-button-default uk-button-large">
+          {{ _x('Read more', 'Blog posts', 'blog-posts-section')|e('esc_html') }}
+        </a>
+
+      </article>
+    {% endfor %}
+
+  </ul>
 {% endif %}
