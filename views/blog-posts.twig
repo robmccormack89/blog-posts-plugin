@@ -6,7 +6,7 @@
 				<article class="post {{ post.class|e('esc_html') }}">
 
 					{% if post.thumbnail %}
-						<img src="{{ post.thumbnail.src|resize(720, 620)|e('esc_url') }}" alt="{{ post.thumbnail.alt|e('esc_html') }}" width="720" height="620">
+						<img src="{{ post.thumbnail.src|resize(800, 450)|e('esc_url') }}" alt="{{ post.thumbnail.alt|e('esc_html') }}" width="800" height="450">
 					{% endif %}
 
 					<h3>
